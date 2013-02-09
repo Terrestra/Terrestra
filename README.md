@@ -1,4 +1,4 @@
-Terrestra
-=========
+gifted
+======
 
-Server Client for 2d MMO in Dart
+a not so finished html5/javascript multiplayer game for the browser!

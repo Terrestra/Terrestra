@@ -1,0 +1,5 @@
+name:  terrestraClient
+description:  A sample application
+
+dependencies:
+  browser: any

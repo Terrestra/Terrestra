@@ -1,0 +1,67 @@
+body {
+  background:-webkit-gradient(radial, center center, 300, center center, 600, from(rgba(0,0,0,0)), to(rgba(0,0,0,1))), url('public/image/background.png') repeat, #000;
+  background-color:#4c584e;
+  background-repeat:repeat;
+  }
+
+p {
+  color: #333;
+}
+
+#logo {
+  position:absolute;
+  left:50%;
+  top:20px;
+  margin-left:-283px;
+  width:567px;
+  height:223px;
+  background-image:url(public/image/terrestra_logo.png);
+}
+
+#logo:hover {
+    background-image:url(public/image/terrestra_logo_hover.png);
+  }
+
+#chatContainer {
+  position:relative;
+  top:40px;
+  margin-left:10px;
+  margin-right:10px;
+  height: 100px;
+  border: 1px solid #25221d;
+  background-color: #454238;
+}
+
+#chatOutput {
+  font-size: 24pt;
+  text-align: center;
+  color:white;
+}
+
+#chatInput {
+  z-index:100;
+  margin-top:10px;
+  margin-left:10px;
+  margin-right:10px;
+  border: 1px solid #25221d;
+  background-color: #454238;
+  color:white;
+}
+
+#canvas {
+  background-color:#25221d;
+  margin-top:18px;
+  margin-left:19px;
+}
+
+#background-canvas {
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-401px;
+  margin-left:-530px;
+  width:1060px;
+  height:803px;
+  background-image:url(public/image/background_canvas.png);
+  background-repeat:no-repeat;
+}
