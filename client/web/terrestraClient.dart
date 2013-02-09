@@ -7,15 +7,15 @@ part 'lib/chat.dart';
 part 'lib/messages.dart';
 
 main() {
-  WebSocket ws = new WebSocket("ws://192.168.2.103:8080/ws");
+  WebSocket ws = new WebSocket("ws://192.168.2.111:8080/ws");
 
   Chat chat = new Chat(ws);
-
-  var text = query("#clientInput");
-
+  
+  String sending = JSON.stringify({"messageType": Messages.CHAT, "chat": "test"});
+    
   ws.on.open.add( (a) {
 
-    ws.send("Welcome to the Chat!");
+    //ws.send(JSON.stringify({"messageType": 3, "chat" : "Welcome to the Chat!"}));
 
   });
 
@@ -29,11 +29,20 @@ main() {
   });
 
   ws.on.message.add( (message) {
-    var messageData = JSON.parse(message.data);
-    print(messageData["message"]);
-
-
-    query("#text").text = messageData["message"];
+    print("Message Recieved");
+    Map messageJson = JSON.parse(message.data);
+    print("Message Parsed");
+        switch(messageJson['messageType']){
+          case Messages.BATTLE:
+            //Do Battle
+            break;
+          case Messages.CHAT:
+            //Add Chat Message to History
+            //print(messageJson.chat);
+            chat.addChatMessage(messageJson['chat'], "TODO");
+            break;
+          default:
+            break;
+        }
   });
-
 }

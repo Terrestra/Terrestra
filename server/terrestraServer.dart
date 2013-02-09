@@ -23,10 +23,8 @@ main() {
 
     Player player = new Player(new TerestraConnection(conn, world1), world1);
     world1.addPlayer(player);
-
-    print(player.id);
   };
 
-  server.listen("192.168.2.103",8080);
+  server.listen("192.168.2.111",8080);
   print("Server up and running!");
 }

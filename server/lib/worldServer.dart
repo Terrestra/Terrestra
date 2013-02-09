@@ -23,7 +23,8 @@ class WorldServer {
    */
   void addPlayer(Player player){
     this.players.add(player);
-    print("test player");
+    print("Adding Player with following ID:");
+    print(player.id);
   }
 
   /**

@@ -25,7 +25,8 @@ class Player extends Character {
     this.id = con.id;
 
     this.tConnection.wsConnection.onClosed = (status, reason) {
-      print("on closed");
+      print("Player with following ID is leaving:");
+      print(this.id);
       this.world.removePlayer(this);
     };
 
@@ -34,27 +35,29 @@ class Player extends Character {
      *
      */
     this.tConnection.wsConnection.onMessage = (message) {
-      var messageJson = JSON.parse(message);
-        switch(messageJson.messageType){
+      print("something arrived");
+      Map messageJson = JSON.parse(message);
+      print("JSON arrived");
+        switch(messageJson['messageType']){
           case Messages.BATTLE:
             //Do Battle
             break;
           case Messages.MOVE:
             //Do Move
-            this.movePlayer(messageJson.direction);
+            //this.movePlayer(messageJson.direction);
             break;
           case Messages.UPDATE_HP:
             //Do Update HP
-            this.updateHp(messageJson.hpModifier);
+            //this.updateHp(messageJson.hpModifier);
             break;
           case Messages.CHAT:
             //Do Update HP
+            print("JSON was Chat-Type");
             this.world.sendChatMessage(message);
             break;
           default:
             break;
         }
-
     };
   }
 
