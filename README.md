@@ -1,4 +1,4 @@
 gifted
 ======
 
-a not so finished html5/javascript multiplayer game for the browser!
+a not so finished Dart multiplayer game for the browser!
