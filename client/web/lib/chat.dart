@@ -21,18 +21,19 @@ class Chat {
 
 
     //react on input
-    chatInputField.on.input.add((a) {
-      if(chatInputField.value == null){
-        //chatInputField.text = "ehhh";
-      }else {
-        //TODO playerName sollte hier verfügbar sein
-        print("send JSON");
-        String sending = JSON.stringify({"messageType": Messages.CHAT, "chat": chatInputField.value});
-        print(sending);
-        this.ws.send(sending);
-        print("JSON was sent");
+    chatInputField.onKeyDown.listen((a) {
+      if(a.keyCode == 13){
+        if(chatInputField.value == null){
+          //chatInputField.text = "ehhh";
+        }else {
+          //TODO playerName sollte hier verfügbar sein
+          print("send JSON");
+          String sending = stringify({"messageType": Messages.CHAT, "chat": chatInputField.value});
+          print(sending);
+          this.ws.send(sending);
+          print("JSON was sent");
+        }
       }
-
     });
 
     if(chatInputField.value == null){

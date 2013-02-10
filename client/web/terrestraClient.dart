@@ -11,26 +11,26 @@ main() {
 
   Chat chat = new Chat(ws);
   
-  String sending = JSON.stringify({"messageType": Messages.CHAT, "chat": "test"});
+  String sending = stringify({"messageType": Messages.CHAT, "chat": "test"});
     
-  ws.on.open.add( (a) {
+  ws.onOpen.listen( (a) {
 
     //ws.send(JSON.stringify({"messageType": 3, "chat" : "Welcome to the Chat!"}));
 
   });
 
-  ws.on.error.add((a){
+  ws.onError.listen((a){
    print("F7U12");
    print(a.toString());
   });
 
-  ws.on.close.add((a){
+  ws.onClose.listen((a){
     print("closing connection");
   });
 
-  ws.on.message.add( (message) {
+  ws.onMessage.listen( (message) {
     print("Message Recieved");
-    Map messageJson = JSON.parse(message.data);
+    Map messageJson = parse(message.data);
     print("Message Parsed");
         switch(messageJson['messageType']){
           case Messages.BATTLE:

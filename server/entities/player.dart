@@ -36,7 +36,7 @@ class Player extends Character {
      */
     this.tConnection.wsConnection.onMessage = (message) {
       print("something arrived");
-      Map messageJson = JSON.parse(message);
+      Map messageJson = parse(message);
       print("JSON arrived");
         switch(messageJson['messageType']){
           case Messages.BATTLE:
