@@ -23,7 +23,7 @@ class Chat {
     //react on input
     chatInputField.onKeyDown.listen((a) {
       if(a.keyCode == 13){
-        if(chatInputField.value == null){
+        if(chatInputField.value == null || chatInputField.value.length <= 0){
           //chatInputField.text = "ehhh";
         }else {
           //TODO playerName sollte hier verfügbar sein
@@ -32,6 +32,7 @@ class Chat {
           print(sending);
           this.ws.send(sending);
           print("JSON was sent");
+          chatInputField.value = "";
         }
       }
     });
