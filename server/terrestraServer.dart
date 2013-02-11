@@ -25,6 +25,6 @@ main() {
     world1.addPlayer(player);
   };
 
-  server.listen("192.168.2.111",8080);
+  server.listen("127.0.0.1",8080);
   print("Server up and running!");
 }

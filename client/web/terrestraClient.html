@@ -10,7 +10,7 @@
 
     <div id="logo"></div>
 
-    <div id="background-canvas">
+    <div style="display: none" id="canvas_container">
 
       <canvas id="canvas" width="1024px" height="768px"></canvas>
 
@@ -18,6 +18,10 @@
         <p id="chatOutput">test</p>
         <input id="chatInput" value="write something!" text="write something!"/>
       </div>
+    </div>
+    
+    <div id="login">
+          <input id="playButton" type="submit" value="Play"></input>    
     </div>
 
     <script type="application/dart" src="terrestraClient.dart"></script>

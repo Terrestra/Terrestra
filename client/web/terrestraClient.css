@@ -54,7 +54,7 @@ p {
   margin-left:19px;
 }
 
-#background-canvas {
+#canvas_container {
   position:absolute;
   top:50%;
   left:50%;
@@ -64,4 +64,22 @@ p {
   height:803px;
   background-image:url(public/image/background_canvas.png);
   background-repeat:no-repeat;
+}
+
+#login {
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:400px;
+    height:200px;
+    margin-top:-100px;
+    margin-left:-200px;
+    background-color:#25221d;
+}
+
+#playButton {
+  top:50%;
+  left:50%;
+  margin-left:-10px;
+  position:relative;
 }
