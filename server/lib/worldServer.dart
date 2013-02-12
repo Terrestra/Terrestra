@@ -1,5 +1,8 @@
 part of terrestra;
 
+/**
+ * WorldServer
+ */
 class WorldServer {
 
   List players = [];
@@ -7,7 +10,7 @@ class WorldServer {
   int maxPlayers;
   int playerCount;
 
-  /*
+  /**
    * new worldServer with id and maxPlayercount
    *
    */
@@ -43,7 +46,7 @@ class WorldServer {
   }
 
   /**
-   *
+   * sending a chat message to all players
    */
   void sendChatMessage(message){
     for(final Player p in players){

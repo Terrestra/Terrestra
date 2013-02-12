@@ -3,7 +3,7 @@ part of terrestra;
 
 /**
  *
- * Entity
+ * Base entity of all kind
  *
  */
 class Entity {

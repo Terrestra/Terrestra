@@ -7,7 +7,6 @@ import 'dart:async';
 part 'lib/chat.dart';
 part 'lib/messages.dart';
 part 'lib/terrestra_socket.dart';
-part 'lib/configer.dart';
 
 main() {
   //init the listener(s) for the startsite
@@ -39,7 +38,7 @@ void startClientConnection() {
   //queries the login div and hides it
   var loginDiv = query('#login');
   loginDiv.attributes['style'] = 'display:none';
-  
+   
   //queries the logo and hides it
   var logo = query('#logo');
   logo.attributes['style'] = 'display:none';
