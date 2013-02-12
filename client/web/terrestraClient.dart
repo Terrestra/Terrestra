@@ -2,62 +2,16 @@ library terrestra;
 
 import "dart:html";
 import 'dart:json';
+import 'dart:async';
 
 part 'lib/chat.dart';
 part 'lib/messages.dart';
+part 'lib/terrestra_socket.dart';
 
 main() {
   //init the listener(s) for the startsite
   init();
 }
-
-/**
- * Starts the websocket connect and listeners
- * 
- */
-startWebsocket() {
-  WebSocket ws = new WebSocket("ws://127.0.0.1:8080/ws");
-  
-  Chat chat = new Chat(ws);
-  
-  String sending = stringify({"messageType": Messages.CHAT, "chat": "test"});
-  
-  
-  ws.onOpen.listen( (a) {
-    
-  //ws.send(JSON.stringify({"messageType": 3, "chat" : "Welcome to the Chat!"}));
-  
-  });
-  
-  ws.onError.listen((a){
-    print("F7U12");
-    print(a.toString());
-  });
-  
-  ws.onClose.listen((a){
-    print("closing connection");
-  });
-  
-  ws.onMessage.listen( (message) {
-    print("Message Recieved");
-    Map messageJson = parse(message.data);
-    print("Message Parsed");
-    switch(messageJson['messageType']){
-      case Messages.BATTLE:
-        //Do Battle
-        break;
-      case Messages.CHAT:
-        //Add Chat Message to History
-        //print(messageJson.chat);
-        chat.addChatMessage(messageJson['chat'], "TODO");
-        break;
-      default:
-        break;
-    }
-  });
-
-}
-
 
 /**
  * initialize page index
@@ -68,11 +22,11 @@ init() {
   
   //on click show gamefield
   playButton.onClick.listen((event) => showGameField());
+
+  int i = 0;
+
   
-  var loginDiv = query('#login');
-  
-  //make login field invisible
-  loginDiv.onClick.listen((event)=>loginDiv.attributes['style'] = 'display:none');
+
 }
 
 /**
@@ -80,9 +34,15 @@ init() {
  */
 void showGameField() {
   //start websocket and
-  startWebsocket();
+  new TerrestraSocket();
   //display the field 
-  query('#canvas_container').attributes['style'] = 'display:true';
+  query('#canvas_container').attributes['style'] = 'filter:alpha(opacity=50); -moz-opacity:0.50; -khtml-opacity:0.20; opacity:0.90;';
+  
+  var loginDiv = query('#login');
+  loginDiv.attributes['style'] = 'display:none';
+  
+  var logo = query('#logo');
+  logo.attributes['style'] = 'display:none';
 }
 
 
