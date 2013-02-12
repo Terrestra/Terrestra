@@ -14,27 +14,30 @@ class Config {
    * 
    */
   Config() {
-    //var config = new File('config/system.ini');
+    try{
+      var config = new File('config/system.json');
+  
+      //reads the whole file with UTF8 encoding
+      String readIn = config.readAsStringSync(Encoding.UTF_8);
     
-    var config = new File('config/system.json');
 
-    //reads the whole file with UTF8 encoding
-    String readIn = config.readAsStringSync(Encoding.UTF_8);
-    
-    //parses the String to JSON Map
-    this.systemConfig = parse(readIn);
-    
-    // Put the whole file in a single string.
-    config.readAsString(Encoding.UTF_8).then((String contents) {
-      print('The entire file is ${contents.length} characters long');
-    });
-    
-    // Put each line of the file into its own string.
-    config.readAsLines(Encoding.UTF_8).then((List<String> lines) {
+      //parses the String to JSON Map
+      this.systemConfig = parse(readIn);
+  
       
-      print('The entire file is ${lines.length} lines long');
+      // Put the whole file in a single string.
+      config.readAsString(Encoding.UTF_8).then((String contents) {
+        print('The entire file is ${contents.length} characters long');
+      });
       
-    });
+      // Put each line of the file into its own string.
+      config.readAsLines(Encoding.UTF_8).then((List<String> lines) {
+        print('The entire file is ${lines.length} lines long');
+      });
+    
+    }catch(e) {
+      print("something went wrong whilest reading in the config file");
+    }
   }
   
   /**
