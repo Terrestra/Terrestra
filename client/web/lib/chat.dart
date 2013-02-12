@@ -44,6 +44,9 @@ class Chat {
     }
   }
   
+  /**
+   * 
+   */
   void addChatMessage(String message, String playerName){
     history.add(message);
     if(history.length >= maxHistory){

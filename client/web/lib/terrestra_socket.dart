@@ -1,5 +1,8 @@
 part of terrestra;
 
+/**
+ * TerrestraSocket which holds die WebSocket Connection
+ */
 class TerrestraSocket {
   WebSocket ws;
   

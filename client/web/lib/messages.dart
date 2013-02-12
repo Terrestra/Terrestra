@@ -1,5 +1,8 @@
 part of terrestra;
 
+/**
+ * Message Types 
+ */
 class Messages {
 
   static const String BATTLE = "0";
