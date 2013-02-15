@@ -17,7 +17,7 @@ main() {
   //get the serverconfig
   Config config = new Config();
   Map systemConfig = config.getConfig();
-  
+
   HttpServer server = new HttpServer();
   WebSocketHandler wsHandler = new WebSocketHandler();
 

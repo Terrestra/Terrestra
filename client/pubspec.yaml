@@ -1,5 +1,7 @@
-name:  terrestraClient
-description:  A sample application
-
+name: terrestraClient
+version: 0.0.1
+author: Klaus Wörner & Peter Holmeier
+description: Client for Terrestra
+homepage: http://github.com/terrestra/terrestra
 dependencies:
   browser: any
