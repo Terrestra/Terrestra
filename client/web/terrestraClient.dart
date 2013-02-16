@@ -8,6 +8,7 @@ part 'lib/chat.dart';
 part 'lib/messages.dart';
 part 'lib/terrestra_socket.dart';
 part 'lib/asset_manager.dart';
+part 'view/game.dart';
 
 /**
  * 
@@ -17,6 +18,8 @@ part 'lib/asset_manager.dart';
 main() {
   //init the listener(s) for the startsite
   init();
+  
+  print(document.documentElement.clientWidth);
 }
 
 /**
@@ -25,6 +28,8 @@ main() {
  */
 init() {
   var playButton = query('#playButton');
+  
+  
   
   //on click show gamefield
   playButton.onClick.listen((event) => startGameInterface());
@@ -59,5 +64,3 @@ void startGameInterface() {
   
 
 }
-
-
