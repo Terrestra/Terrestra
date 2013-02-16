@@ -35,7 +35,6 @@ class Player extends Character {
      *
      */
     this.tConnection.wsConnection.onMessage = (message) {
-      print("something arrived");
       Map messageJson = parse(message);
       print("JSON arrived");
         switch(messageJson['messageType']){
@@ -51,9 +50,13 @@ class Player extends Character {
             //this.updateHp(messageJson.hpModifier);
             break;
           case Messages.CHAT:
-            //Do Update HP
+            //Do send Chatmessage
             print("JSON was Chat-Type");
-            this.world.sendChatMessage(message);
+            this.tConnection.broadcast(message);
+            break;
+          case Messages.UPDATE_ENTITY:
+            //Do Update Entity
+            //this.updateHp(messageJson.hpModifier);
             break;
           default:
             break;
@@ -68,37 +71,5 @@ class Player extends Character {
    */
   void send(message){
     this.tConnection.wsConnection.send(message);
-  }
-
-  /**
-   *
-   *
-   */
-  void movePlayer(int direction){
-      switch(direction){
-        case 0:
-          //Left
-          this.x -= this.speed;
-          break;
-        case 1:
-          //Right
-          this.x += this.speed;
-          break;
-        case 2:
-          //Up
-          this.y -= this.speed;
-          break;
-        case 3:
-          //Down
-          this.y += this.speed;
-          break;
-      }
-  }
-
-  /**
-   *
-   */
-  void updateHp(int hpModifier){
-
   }
 }

@@ -2,9 +2,10 @@ part of terrestra;
 
 class Messages {
 
-  static const String BATTLE = "0";
-  static const String MOVE = "1";
-  static const String UPDATE_HP = "2";
-  static const String CHAT = "3";
+  static const int BATTLE = 0;
+  static const int MOVE = 1;
+  static const int UPDATE_HP = 2;
+  static const int CHAT = 3;
+  static const int UPDATE_ENTITY = 4;
 
 }

@@ -44,13 +44,4 @@ class WorldServer {
       }
     }
   }
-
-  /**
-   * sending a chat message to all players
-   */
-  void sendChatMessage(message){
-    for(final Player p in players){
-      p.send(message);
-    }
-  }
 }

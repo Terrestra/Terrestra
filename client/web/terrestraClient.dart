@@ -9,6 +9,10 @@ part 'lib/messages.dart';
 part 'lib/terrestra_socket.dart';
 part 'lib/asset_manager.dart';
 part 'view/game.dart';
+part 'entities/character.dart';
+part 'entities/player.dart';
+part 'entities/mob.dart';
+part 'entities/entity.dart';
 
 /**
  * 

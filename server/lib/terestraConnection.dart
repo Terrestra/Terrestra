@@ -15,4 +15,13 @@ class TerestraConnection {
       this.id = serv.players.last.id + 1;
     }
   }
+  
+  /**
+   * Sends a Message to all Players on one Worldserver
+   */
+  void broadcast(message){
+    for(final Player p in server.players){
+      p.send(message);
+    }
+  }
 }
