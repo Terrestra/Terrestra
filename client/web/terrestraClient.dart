@@ -65,16 +65,16 @@ init() {
 void startGameInterface() {
   var assetManager = new AssetManager();
   
-<<<<<<< HEAD
+
   game = new Game(assetManager);
   
   //start websocket and
   socket = new TerrestraSocket();
-=======
+
   //build new audioManager on this base path
   AudioManager audioManager = new AudioManager("public/audio");
   AudioClip terrestraClip = audioManager.makeClip("terrestra", "terrestra.wav");
->>>>>>> added simple audio lib and used for example
+  //added simple audio lib and used for example
   
   //testload
   assetManager.queueDownload("public/image/up_sprite.gif");
