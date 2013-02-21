@@ -3,7 +3,7 @@ part of terrestra;
 /**
  * Message Types 
  */
-class Messages {
+class Types {
 
   static const int BATTLE = 0;
   static const int MOVE = 1;

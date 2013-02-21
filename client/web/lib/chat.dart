@@ -28,7 +28,7 @@ class Chat {
         }else {
           //TODO playerName sollte hier verfügbar sein
           print("send JSON");
-          String sending = stringify({"messageType": Messages.CHAT, "chat": chatInputField.value});
+          String sending = stringify({"messageType": Types.CHAT, "chat": chatInputField.value});
           print(sending);
           this.ws.send(sending);
           print("JSON was sent");

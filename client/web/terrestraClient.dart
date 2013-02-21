@@ -5,14 +5,18 @@ import 'dart:json';
 import 'dart:async';
 
 part 'lib/chat.dart';
-part 'lib/messages.dart';
+part 'lib/Types.dart';
 part 'lib/terrestra_socket.dart';
 part 'lib/asset_manager.dart';
 part 'view/game.dart';
+part 'view/gameClient.dart';
 part 'entities/character.dart';
 part 'entities/player.dart';
 part 'entities/mob.dart';
 part 'entities/entity.dart';
+
+Game game;
+TerrestraSocket socket;
 
 /**
  * 
@@ -33,12 +37,26 @@ main() {
 init() {
   var playButton = query('#playButton');
   
-  
-  
   //on click show gamefield
   playButton.onClick.listen((event) => startGameInterface());
+  
+  document.window.on.keyDown.add((e) => onKeyDown(e), true);
+  
+  document.window.on.keyUp.add((e) => onKeyReleased(e), true);
 
 }
+
+  void onKeyDown(KeyboardEvent key){
+    if(game != null){
+      game.onKeyDown(key);
+    }
+  }
+
+  void onKeyReleased(KeyboardEvent key){
+    if(game != null){
+      game.onKeyReleased(key);
+    }
+  }
 
 /**
  * set display style of canvas to true and starts the TerrestraSocket Connection
@@ -46,13 +64,16 @@ init() {
 void startGameInterface() {
   var assetManager = new AssetManager();
   
+  game = new Game(assetManager);
+  
+  //start websocket and
+  socket = new TerrestraSocket();
+  
   //testload
   assetManager.queueDownload("public/image/up_sprite.gif");
   
   //callback to start after loading all sprites of quere
   assetManager.downloadAll(() {
-    //start websocket and
-    new TerrestraSocket();
     
     //display the field 
     query('#canvas_container').attributes['style'] = 'filter:alpha(opacity=50); -moz-opacity:0.50; -khtml-opacity:0.20; opacity:0.90;';
@@ -65,6 +86,4 @@ void startGameInterface() {
     var logo = query('#logo');
     logo.attributes['style'] = 'display:none';
   });
-  
-
 }

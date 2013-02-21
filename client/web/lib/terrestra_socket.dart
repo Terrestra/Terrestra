@@ -16,7 +16,7 @@ class TerrestraSocket {
     
     Chat chat = new Chat(ws);
     
-    String sending = stringify({"messageType": Messages.CHAT, "chat": "Welcome to the chat!"});
+    String sending = stringify({"messageType": Types.CHAT, "chat": "Welcome to the chat!"});
     
     
     //onOpen event listener
@@ -50,10 +50,10 @@ class TerrestraSocket {
       
       //TODO auslagern in message handling
       switch(messageJson['messageType']){
-        case Messages.BATTLE:
+        case Types.BATTLE:
           //Do Battle
           break;
-        case Messages.CHAT:
+        case Types.CHAT:
           //Add Chat Message to History
           //print(messageJson.chat);
           chat.addChatMessage(messageJson['chat'], "TODO");
@@ -63,6 +63,5 @@ class TerrestraSocket {
       }
     });
   }
-
 }
 
