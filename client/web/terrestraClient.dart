@@ -3,6 +3,7 @@ library terrestra;
 import "dart:html";
 import 'dart:json';
 import 'dart:async';
+import 'package:simple_audio/simple_audio.dart';
 
 part 'lib/chat.dart';
 part 'lib/Types.dart';
@@ -64,10 +65,16 @@ init() {
 void startGameInterface() {
   var assetManager = new AssetManager();
   
+<<<<<<< HEAD
   game = new Game(assetManager);
   
   //start websocket and
   socket = new TerrestraSocket();
+=======
+  //build new audioManager on this base path
+  AudioManager audioManager = new AudioManager("public/audio");
+  AudioClip terrestraClip = audioManager.makeClip("terrestra", "terrestra.wav");
+>>>>>>> added simple audio lib and used for example
   
   //testload
   assetManager.queueDownload("public/image/up_sprite.gif");
@@ -85,5 +92,13 @@ void startGameInterface() {
     //queries the logo and hides it
     var logo = query('#logo');
     logo.attributes['style'] = 'display:none';
+    
+    // Load sound data into clip.
+    terrestraClip.load().then((_) {
+      // Assign clip to music system.
+      audioManager.music.clip = terrestraClip;
+      // Play music.
+      audioManager.music.play();
+    });
   });
 }

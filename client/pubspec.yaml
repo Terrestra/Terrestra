@@ -5,3 +5,5 @@ description: Client for Terrestra
 homepage: http://github.com/terrestra/terrestra
 dependencies:
   browser: any
+  simple_audio:
+    git: https://github.com/johnmccutchan/simpleaudio.git

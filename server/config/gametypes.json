@@ -1,0 +1,12 @@
+{
+ "types": 
+  {
+   "messages":
+    {
+     "WELCOME": 1,
+     "MOVE":    2,
+     "SPAWN":   3,
+     "DESPAWN": 4
+    }
+  }
+}
