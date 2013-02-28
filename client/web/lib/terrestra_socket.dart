@@ -12,6 +12,7 @@ class TerrestraSocket {
    * Makes a new WebSocket Connection to "ws://ip:port/ws"
    */
   TerrestraSocket() {
+        
     this.ws = new WebSocket("ws://127.0.0.1:8080/ws");
     
     Chat chat = new Chat(ws);

@@ -2,11 +2,11 @@ part of terrestra;
 
 class TerestraConnection {
 
-  WebSocketConnection wsConnection;
+  WebSocket wsConnection;
   int id;
   WorldServer server;
 
-  TerestraConnection(WebSocketConnection con, WorldServer serv){
+  TerestraConnection(WebSocket con, WorldServer serv){
     this.wsConnection = con;
     this.server = serv;
     if(serv.players.length <= 0) {

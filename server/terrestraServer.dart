@@ -17,19 +17,30 @@ main() {
   //get the serverconfig
   Config config = new Config();
   Map systemConfig = config.getConfig();
-
-  HttpServer server = new HttpServer();
-  WebSocketHandler wsHandler = new WebSocketHandler();
-
-  server.addRequestHandler((req) => req.path == "/ws", wsHandler.onRequest);
-
+  
   WorldServer world1 = new WorldServer(1, 10);
+  
+  HttpServer.bind(systemConfig['server.adress'], systemConfig['server.port'])
+  .then((HttpServer server) {
+    server.transform(new WebSocketTransformer()).listen((WebSocket webSocket) {
+      
+      //Hier darf nix stehen also müssen wir schauen wie wir dann
+      //nen neuen Spieler hinzufügen
+      //Bzw. irgendwas stimmt mit der Connection nicht ganz weil er meint dass
+      //er schon einen Subscriber hat. Naja mal schauen
+      
+      //Player player = new Player(new TerestraConnection(webSocket, world1), world1);
+      //world1.addPlayer(player);
+      
+      webSocket.listen((event) {
+        if (event is MessageEvent) {
+          /* Handle message. */
+        } else if (event is CloseEvent) {
+          /* Handle closed. */
+        }
+      });
+    });
+  });
 
-  wsHandler.onOpen = (WebSocketConnection conn) {
-    Player player = new Player(new TerestraConnection(conn, world1), world1);
-    world1.addPlayer(player);
-  };
-
-  server.listen(systemConfig['server.adress'], systemConfig['server.port']);
   print("Server up and running!");
 }

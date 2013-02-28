@@ -37,17 +37,25 @@ main() {
  */
 init() {
   var playButton = query('#playButton');
-  
   //on click show gamefield
   playButton.onClick.listen((event) => startGameInterface());
   
-  document.window.on.keyDown.add((e) => onKeyDown(e), true);
+  window.onKeyDown.listen((KeyboardEvent key) {
+    if(game != null){
+      game.onKeyDown(key);
+    }
+  });
   
-  document.window.on.keyUp.add((e) => onKeyReleased(e), true);
+  window.onKeyUp.listen((KeyboardEvent key) {
+    if(game != null){
+      game.onKeyDown(key);
+    }
+  });
 
 }
 
   void onKeyDown(KeyboardEvent key){
+    print(key.keyCode);
     if(game != null){
       game.onKeyDown(key);
     }
